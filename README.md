@@ -14,4 +14,4 @@ To verify the correctness of terraform configuration file run: `terrafrom valida
 
 To create execution plan run: `terraform plan`
 
-To execute planned actions run: `terraform run`
+To execute planned actions run: `terraform apply`
