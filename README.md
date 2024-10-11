@@ -6,7 +6,7 @@ Install AWS CLI using: `https://docs.aws.amazon.com/cli/latest/userguide/getting
 
 Login to aws account using access and secret access key and run: `aws configure`
 
-## Creating-VPC-Using-Terraform
+## Creating-VPC-Using-Terraform:
 
 To initialize the file run: `terraform init`
 
