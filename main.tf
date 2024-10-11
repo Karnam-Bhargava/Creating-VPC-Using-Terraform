@@ -1,7 +1,9 @@
+# Creating AWS VPC
 resource "aws_vpc" "myvpc" {
   cidr_block = var.vpc-cidr
 }
 
+# Creating subnets
 resource "aws_subnet" "sub1" {
   vpc_id     = aws_vpc.myvpc.id
   cidr_block = var.sub1-cidr
@@ -16,10 +18,12 @@ resource "aws_subnet" "sub2" {
   map_public_ip_on_launch = true
 }
 
+# Creating internet gateway
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.myvpc.id
 }
 
+# Creating route table and associating subnets with route table
 resource "aws_route_table" "rt" {
   vpc_id = aws_vpc.myvpc.id
 
@@ -39,6 +43,7 @@ resource "aws_route_table_association" "rta2" {
   route_table_id = aws_route_table.rt.id
 }
 
+# Creating security group and assigning inbound traffic rules
 resource "aws_security_group" "websg" {
   name   = "terraform-vpc"
   vpc_id = aws_vpc.myvpc.id
@@ -70,6 +75,7 @@ resource "aws_security_group" "websg" {
   }
 }
 
+# Creating an EC2 instance
 resource "aws_instance" "instance1" {
   ami = var.inst-ami
   instance_type = var.inst-type
@@ -86,6 +92,7 @@ resource "aws_instance" "instance2" {
   user_data = base64encode(file("server2-script.sh"))
 }
 
+# Creating an application load balancer
 resource "aws_lb" "myalb" {
   name               = "myalb"
   internal           = false
@@ -134,6 +141,7 @@ resource "aws_lb_listener" "listener" {
   }
 }
 
+# Getting DNS name using output from application load balancer to access the web page
 output "loadbalancerdns" {
   value = aws_lb.myalb.dns_name
 }
