@@ -16,3 +16,6 @@ To create execution plan run: `terraform plan`
 
 To execute planned actions run: `terraform apply`
 
+![Screenshot (91)](https://github.com/user-attachments/assets/2999320d-b75f-451d-b489-67fd7e2eb004)
+
+![Screenshot (95)](https://github.com/user-attachments/assets/4cbdbf1e-a9bf-4819-924a-3c701fd402ca)
